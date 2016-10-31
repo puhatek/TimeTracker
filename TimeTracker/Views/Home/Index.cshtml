@@ -4,11 +4,24 @@
     ViewBag.Title = "Home Page";
 }
 
+<div class="row base-bg">
+    <div class="col-md-1 p-8"></div>
+    <div class="col-md-4 p-8">Project Name</div>
+    <div class="col-md-3 p-8">Progress</div>
+    <div class="col-md-1 p-8">Start Task</div>
+    <div class="col-md-1 p-8">End Task</div>
+    <div class="col-md-2 p-8"></div>
+</div>
+
 @foreach (var task in Model)
 {
-    <div class="col-md-3">@task.projectName</div>
-    <div class="col-md-3">@task.clientRep</div>
-    <div class="col-md-2">@task.startDate</div>
-    <div class="col-md-2">@task.leadTime</div>
-    <div class="col-md-2">@task.status</div>
+    <div class="row">
+        <div class="col-md-1 p-4"><input type="checkbox" name="selecteRow" /></div>
+        <div class="col-md-4 p-4">@task.projectName<span>@task.status</span></div>
+        <div class="col-md-3 p-4 c100 p@(@task.leadTime*10)"><span>@(@Math.Round((decimal)@task.leadTime / 3, 0) * 100)%</span></div>
+        <div class="col-md-1 p-4 text-center"><input type="checkbox" name="startTask" /></div>
+        <div class="col-md-1 p-4 text-center"><input type="checkbox" name="endTask" /></div>
+        <div class="col-md-2 p-4"><span class="glyphicons glyphicons-settings"></span></div>
+    </div>
+
 }

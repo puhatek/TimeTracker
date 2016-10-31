@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,7 @@ namespace TimeTracker.Repository
 {
     public class TaskRepository
     {
-        private string connectionString = @"Server=DESKTOP-QPSPDBH;Database=TimeTracker;Integrated Security=True;";
+        private string connectionString = ConfigurationManager.ConnectionStrings["LocalDBServer"].ConnectionString;
 
         private SqlConnection GetConnection()
         {
