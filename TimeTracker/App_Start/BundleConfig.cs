@@ -23,9 +23,14 @@ namespace TimeTracker
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new StyleBundle("~/Content/css/bootstrap").Include(
+                "~/Content/css/bootstrap.min.css", new CssRewriteUrlTransform()));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                    "~/Content/site.css",
+                    "~/Content/circle.css"));
+
+
         }
     }
 }

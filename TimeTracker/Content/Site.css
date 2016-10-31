@@ -23,13 +23,6 @@ textarea {
     max-width: 280px;
 }
 
-.row:nth-child(2n+1) {
-    background: #ddd
-}
-.base-bg {
-    background:#9370db!important; 
-}
-
 .p-t4 {padding-top: 4px;}
 .p-t8 {padding-top: 8px;}
 .p-t12 {padding-top: 12px;}
@@ -46,3 +39,21 @@ textarea {
 .p-18 {padding: 18px 15px;}
 .p-24 {padding: 24px 15px;}
 
+
+/*status colours*/
+.status {padding: 10px 15px;margin-left:20px;min-width:90px;}
+.not-started{border:solid 1px #444;}
+.in-progress {color: #4F8A10;background-color: #DFF2BF;}
+.verifying {color: #9F6000;background-color: #FEEFB3;}
+.finished {color: #00529B;background-color: #BDE5F8;}
+.bug-fixing {color: #D8000C;background-color: #FFBABA;}
+.paid {background-color: #000;color:#fff}
+/*status colours*/
+
+
+.row:nth-child(2n+1) {
+    background: #eee
+}
+.base-bg {
+    background:#9370db!important; 
+}

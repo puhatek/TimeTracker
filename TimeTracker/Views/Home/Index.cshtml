@@ -5,23 +5,31 @@
 }
 
 <div class="row base-bg">
-    <div class="col-md-1 p-8"></div>
-    <div class="col-md-4 p-8">Project Name</div>
-    <div class="col-md-3 p-8">Progress</div>
-    <div class="col-md-1 p-8">Start Task</div>
-    <div class="col-md-1 p-8">End Task</div>
-    <div class="col-md-2 p-8"></div>
+    <div class="col-md-1 p-18"></div>
+    <div class="col-md-4 p-18">Project Name</div>
+    <div class="col-md-3 p-18">Progress</div>
+    <div class="col-md-1 p-18">Start Task</div>
+    <div class="col-md-1 p-18">End Task</div>
+    <div class="col-md-2 p-18"></div>
 </div>
 
 @foreach (var task in Model)
 {
     <div class="row">
-        <div class="col-md-1 p-4"><input type="checkbox" name="selecteRow" /></div>
-        <div class="col-md-4 p-4">@task.projectName<span>@task.status</span></div>
-        <div class="col-md-3 p-4 c100 p@(@task.leadTime*10)"><span>@(@Math.Round((decimal)@task.leadTime / 3, 0) * 100)%</span></div>
-        <div class="col-md-1 p-4 text-center"><input type="checkbox" name="startTask" /></div>
-        <div class="col-md-1 p-4 text-center"><input type="checkbox" name="endTask" /></div>
-        <div class="col-md-2 p-4"><span class="glyphicons glyphicons-settings"></span></div>
+        <div class="col-md-1 p-t18"><input type="checkbox" name="selecteRow" /></div>
+        <div class="col-md-4 p-t18">@task.projectName <span class="status @task.status.Replace(" ","-").ToLower()">@task.status</span></div>
+        <div class="col-md-3 p-t8">
+            <div class="c100 xsmall p@(@task.leadTime * 10)">
+                <span> @Math.Floor( (((decimal)@task.leadTime/3) * 100) )%</span>
+                <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1 p-t18 text-center"><input type="checkbox" name="startTask" /></div>
+        <div class="col-md-1 p-t18 text-center"><input type="checkbox" name="endTask" /></div>
+        <div class="col-md-2 p-t18"><span class="glyphicons glyphicons-settings"></span></div>
     </div>
 
 }
