@@ -1,6 +1,7 @@
 ﻿namespace TimeTracker.Models
 {
-    public class ClientRep
+    public class Client
     {
+        public int id;
     }
 }

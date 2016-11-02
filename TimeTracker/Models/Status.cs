@@ -1,9 +1,17 @@
-﻿namespace TimeTracker.Models
-{
-    public class Status
-    {
-        public string name { get; set; }
+﻿using System.ComponentModel.DataAnnotations;
 
-        public void changeStatus() { }
+namespace TimeTracker.Models
+{
+    public enum Status
+    {
+        [Display(Name = "In Progress")]
+        InProgress,
+        Verifying,
+        Paid,
+        [Display(Name = "Not Started")]
+        NotStarted,
+        Finished,
+        [Display(Name = "Bug fixing")]
+        BugFixing
     }
 }

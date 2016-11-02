@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,8 @@ namespace TimeTracker.Repository
     public class TaskRepository
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["LocalDBServer"].ConnectionString;
+        ProjectRepository projectRepo = new ProjectRepository();
+        ClientRepository clientRepo = new ClientRepository();
 
         private SqlConnection GetConnection()
         {
@@ -32,6 +35,26 @@ namespace TimeTracker.Repository
             }
         }
 
+        public void add(ProjectTask task)
+        {
+            Project project = projectRepo.get(task.projectName);
+            Client client = clientRepo.get(task.clientRep); 
 
+            using (var conn = GetConnection())
+            {
+                using (SqlCommand cmd = conn.CreateCommand() )
+                {
+                    cmd.CommandText = @"INSERT INTO Task (ProjectId, ClientRepID, TastStatusId,LeadTime)
+                                        VALUES (@projectId, @clientrepId, @statusId, @leadTime)";
+                    cmd.Parameters.AddWithValue("@projectId", project.id);
+                    cmd.Parameters.AddWithValue("@clientrepId", client.id);
+                    cmd.Parameters.AddWithValue("@statusId", (int)Status.InProgress);
+                    cmd.Parameters.AddWithValue("@leadTime", task.leadTime ); 
+                }
+
+            }
+        }
+
+        public void start(ProjectTask task) { }
     }
 }
