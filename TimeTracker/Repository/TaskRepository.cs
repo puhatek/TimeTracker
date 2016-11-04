@@ -38,7 +38,7 @@ namespace TimeTracker.Repository
         public void add(ProjectTask task)
         {
             Project project = projectRepo.get(task.projectName);
-            Client client = clientRepo.get(task.clientRep); 
+            ClientRep client = clientRepo.get(task.clientRep); 
 
             using (var conn = GetConnection())
             {
@@ -47,7 +47,7 @@ namespace TimeTracker.Repository
                     cmd.CommandText = @"INSERT INTO Task (ProjectId, ClientRepID, TastStatusId,LeadTime)
                                         VALUES (@projectId, @clientrepId, @statusId, @leadTime)";
                     cmd.Parameters.AddWithValue("@projectId", project.id);
-                    cmd.Parameters.AddWithValue("@clientrepId", client.id);
+                    cmd.Parameters.AddWithValue("@clientrepId", client.clientReps.Select(a=>a.Value==task.clientRep).First());
                     cmd.Parameters.AddWithValue("@statusId", (int)Status.InProgress);
                     cmd.Parameters.AddWithValue("@leadTime", task.leadTime ); 
                 }

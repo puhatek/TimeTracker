@@ -13,6 +13,10 @@ namespace TimeTracker.Controllers
     {
         public ActionResult Index()
         {
+            ClientRepository clientRepo = new ClientRepository();
+
+            ClientRep client = clientRepo.get("Chloe Waterfield");
+
             TaskRepository project = new TaskRepository();
 
             List<ProjectTask> model = project.get();

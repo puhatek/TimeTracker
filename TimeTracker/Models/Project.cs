@@ -5,6 +5,6 @@
         public int id { get; set; }
         public string name { get; set; }
         public ProjectType projectType { get; set; }
-        public ClientRep clientRep { get; set; }
+        public ClientRep client { get; set; }
     }
 }
