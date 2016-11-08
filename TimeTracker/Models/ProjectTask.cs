@@ -13,6 +13,7 @@ namespace TimeTracker.Models
         public string projectName { get; set; }
         public string clientRep { get; set; }
         public string status { get; set; } 
+        public int taskStatusId { get; set; }
         public int leadTime { get; set; }
     }
 }

@@ -24,6 +24,12 @@ namespace TimeTracker.Controllers
             return View(model);
         }
 
+        public ActionResult Create()
+        {
+            TaskRepository task = new TaskRepository();
+            return View( task );
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
